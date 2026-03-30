@@ -18,7 +18,7 @@ In this implementation:
 ### 1. Signal detection on the Arduino
 The Arduino sketch reads the analog input from the receiver, scales it, and applies a digital filter using the numerator and denominator coefficients defined in the sketch. It then computes a rectified signal and checks the maximum over a hysteresis window before deciding whether the beam is blocked. The sketch drives an LED indicator and prints `ALERT` or `CLEAR` to serial at 1200 baud. 
 ### 2. Serial monitoring on the computer
-`bridge.py` opens the configured serial port, continuously reads the Arduino output, and watches for a state transition. When it sees `ALERT` after a previous `CLEAR`, it triggers the email alert function. This prevents repeated emails from being sent every loop while the beam remains blocked. fileciteturn0file1
+`bridge.py` opens the configured serial port, continuously reads the Arduino output, and watches for a state transition. When it sees `ALERT` after a previous `CLEAR`, it triggers the email alert function. This prevents repeated emails from being sent every loop while the beam remains blocked. 
 
 ### 3. Email notification
 `alert.py` builds a timestamped SendGrid message with the subject **"Electric Eye Interruption"** and sends it using the API key stored in `CONFIG.py`. It also includes debug output to help troubleshoot failed sends.
