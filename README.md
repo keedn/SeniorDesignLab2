@@ -4,7 +4,7 @@ A frequency-selective **electric eye** safety system built with an **Arduino rec
 
 ## Overview
 
-This repo implements a light beam interrupter safety system similar to the Lab 02 objective: design a frequency-selective filter that passes the desired optical signal while rejecting interference, then use that filtered signal to detect when the beam is blocked. The uploaded lab description frames the project as an “electric eye” system where a transmitter shines a beam at a receiver, and an obstruction triggers a warning condition. fileciteturn0file3
+This repo implements a light beam interrupter safety system similar to the Lab 02 objective: design a frequency-selective filter that passes the desired optical signal while rejecting interference, then use that filtered signal to detect when the beam is blocked. The uploaded lab description frames the project as an “electric eye” system where a transmitter shines a beam at a receiver, and an obstruction triggers a warning condition.
 
 In this implementation:
 
@@ -16,13 +16,12 @@ In this implementation:
 ## How It Works
 
 ### 1. Signal detection on the Arduino
-The Arduino sketch reads the analog input from the receiver, scales it, and applies a digital filter using the numerator and denominator coefficients defined in the sketch. It then computes a rectified signal and checks the maximum over a hysteresis window before deciding whether the beam is blocked. The sketch drives an LED indicator and prints `ALERT` or `CLEAR` to serial at 1200 baud. fileciteturn0file2
-
+The Arduino sketch reads the analog input from the receiver, scales it, and applies a digital filter using the numerator and denominator coefficients defined in the sketch. It then computes a rectified signal and checks the maximum over a hysteresis window before deciding whether the beam is blocked. The sketch drives an LED indicator and prints `ALERT` or `CLEAR` to serial at 1200 baud. 
 ### 2. Serial monitoring on the computer
 `bridge.py` opens the configured serial port, continuously reads the Arduino output, and watches for a state transition. When it sees `ALERT` after a previous `CLEAR`, it triggers the email alert function. This prevents repeated emails from being sent every loop while the beam remains blocked. fileciteturn0file1
 
 ### 3. Email notification
-`alert.py` builds a timestamped SendGrid message with the subject **"Electric Eye Interruption"** and sends it using the API key stored in `CONFIG.py`. It also includes debug output to help troubleshoot failed sends. fileciteturn0file0
+`alert.py` builds a timestamped SendGrid message with the subject **"Electric Eye Interruption"** and sends it using the API key stored in `CONFIG.py`. It also includes debug output to help troubleshoot failed sends.
 
 ## Repository Structure
 
@@ -130,7 +129,7 @@ Connected to COM5. Monitoring Safety Beam...
 (or the port you configured). fileciteturn0file1
 
 ### Step 3: Break the beam
-When the beam is interrupted and the Arduino reports `ALERT`, the Python bridge will print a warning and call the email sender. When the beam is restored, it prints a reset message and continues monitoring. fileciteturn0file1turn0file2
+When the beam is interrupted and the Arduino reports `ALERT`, the Python bridge will print a warning and call the email sender. When the beam is restored, it prints a reset message and continues monitoring. 
 
 ## Example Runtime Flow
 
@@ -157,7 +156,7 @@ check that:
 - the Arduino is plugged in
 - the correct serial port is selected
 - the Arduino Serial Monitor is closed
-- the baud rate matches the sketch (`1200`) fileciteturn0file1turn0file2
+- the baud rate matches the sketch (`1200`) 
 
 ### No email is sent
 Check the following:
@@ -166,10 +165,10 @@ Check the following:
 - the recipient email is correct
 - your network allows the outbound API request
 
-`alert.py` includes debug prints for API-key loading, status codes, and error details to help diagnose SendGrid issues. fileciteturn0file0
+`alert.py` includes debug prints for API-key loading, status codes, and error details to help diagnose SendGrid issues. 
 
 ### Repeated or missing alerts
-The bridge only sends an email when the state changes from `CLEAR` to `ALERT`. If you want repeated alerts while the beam stays blocked, you would need to change the transition logic in `bridge.py`. As written, it is intentionally edge-triggered. fileciteturn0file1
+The bridge only sends an email when the state changes from `CLEAR` to `ALERT`. If you want repeated alerts while the beam stays blocked, you would need to change the transition logic in `bridge.py`. As written, it is intentionally edge-triggered. 
 
 ### Detection is unreliable
 Try:
@@ -177,7 +176,7 @@ Try:
 - reducing ambient light interference
 - improving beam alignment
 - confirming the receiver is wired to the analog pin used in the code
-- checking the filter coefficients and sample timing against your design assumptions fileciteturn0file2turn0file3
+- checking the filter coefficients and sample timing against your design assumptions 
 
 ## Security Notes
 
@@ -194,4 +193,4 @@ Do **not** commit `CONFIG.py` or any real API keys to GitHub. This project depen
 
 ## Acknowledgment
 
-This project builds on the Lab 02 electric-eye filtering concept and a reference digital filter sketch provided for the lab. The current repo extends that base by adding serial monitoring and automated email notification. fileciteturn0file3
+This project builds on the Lab 02 electric-eye filtering concept and a reference digital filter sketch provided for the lab. The current repo extends that base by adding serial monitoring and automated email notification. 
