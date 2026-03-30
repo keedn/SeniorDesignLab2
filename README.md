@@ -67,12 +67,12 @@ The primary Arduino file uses:
 - `threshold_val = 0.02`
 - sample period `Ts = 333` microseconds (3000 Hz)
 
-These settings are defined directly in the sketch. The code updates the detection result once per second and prints serial messages that the Python bridge depends on. fileciteturn0file2
+These settings are defined directly in the sketch. The code updates the detection result once per second and prints serial messages that the Python bridge depends on.
 
 ### Notes
-- Make sure your receiver hardware is actually connected to **A1** if you are using `Final Arduino.cpp`. The reference lab sketch uses **A0**, so keep the code and wiring consistent. fileciteturn0file2
+- Make sure your receiver hardware is actually connected to **A1** if you are using `Final Arduino.cpp`. The reference lab sketch uses **A0**, so keep the code and wiring consistent. 
 - Tune `threshold_val` for your specific room lighting, sensor placement, and transmitter strength.
-- The LED turns on when the beam is treated as blocked in the final Arduino implementation. fileciteturn0file2
+- The LED turns on when the beam is treated as blocked in the final Arduino implementation. 
 
 ## Python Configuration
 
@@ -91,7 +91,7 @@ In `alert.py`, replace:
 
 with real email addresses.
 
-Important: the sender must be a verified sender identity in SendGrid, as noted in the code comments. fileciteturn0file0
+Important: the sender must be a verified sender identity in SendGrid, as noted in the code comments.
 
 ### 3. Set the correct serial port
 In `bridge.py`, update:
@@ -106,7 +106,7 @@ Examples:
 - Windows: `COM3`, `COM4`, `COM5`
 - macOS/Linux: `/dev/ttyUSB0`, `/dev/ttyACM0`, or similar
 
-The bridge expects the Arduino to be running at **1200 baud**. fileciteturn0file1turn0file2
+The bridge expects the Arduino to be running at **1200 baud**. 
 
 ## Running the Project
 
