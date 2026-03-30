@@ -182,15 +182,6 @@ Try:
 
 Do **not** commit `CONFIG.py` or any real API keys to GitHub. This project depends on a secret SendGrid API key, and exposing that key can allow unauthorized use of your account. The repo should keep secrets in ignored local config or environment variables.
 
-## Future Improvements
-
-- Move secrets from `CONFIG.py` to environment variables
-- Add a buzzer in addition to the LED/email alert
-- Log beam events to a file with timestamps
-- Add debounce or longer persistence checks before alerting
-- Add support for SMS or push notifications
-- Make the serial port and email addresses configurable from the command line
-
 ## Acknowledgment
 
 This project builds on the Lab 02 electric-eye filtering concept and a reference digital filter sketch provided for the lab. The current repo extends that base by adding serial monitoring and automated email notification. 
