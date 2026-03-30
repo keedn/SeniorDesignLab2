@@ -126,7 +126,7 @@ If the serial connection succeeds, you should see:
 Connected to COM5. Monitoring Safety Beam...
 ```
 
-(or the port you configured). fileciteturn0file1
+(or the port you configured). 
 
 ### Step 3: Break the beam
 When the beam is interrupted and the Arduino reports `ALERT`, the Python bridge will print a warning and call the email sender. When the beam is restored, it prints a reset message and continues monitoring. 
